@@ -2,12 +2,12 @@ import { useState } from 'react'
 
 import './App.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addNotes, deleteNotes, editNotes } from './redux/slices/noteSlice';
+import { addNotes, deleteNotes, editNotes, searchNotes } from './redux/slices/noteSlice';
 
 function App() {
 
   const [notes, setNotes] = useState();
-  const notesState = useSelector(state => state.noteReducer);
+  const notesState = useSelector(state => state.noteReducer.filteredNotes);
   const [editId, setEditId] = useState(null)
   const [editInput, setEditInput] = useState("")
 
@@ -39,6 +39,13 @@ function App() {
 
         <div className='h-[700px]'>
           <h1 className='text-4xl'>Notes</h1>
+          <input
+            type="text"
+            placeholder="Search notes..."
+            className="border p-2 rounded-xl my-5 w-[300px]"
+            onChange={(e) => dispatch(searchNotes(e.target.value))}
+          />
+
 
           <div className='flex flex-col'>
 
