@@ -53,7 +53,7 @@ function App() {
 
               <div key={item.id} className='w-[500px] p-3 flex  justify-between bg-amber-100 rounded-2xl'>
 
-                {/* If editing this item */}
+                
                 {editId === item.id ? (
                   <input
                     value={editInput}
